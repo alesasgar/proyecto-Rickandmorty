@@ -1,18 +1,24 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
+import { LandingComponent } from './landing/landing.component';
+import { CharacterComponent } from './character/character.component';
 
 const routes: Routes = [
   {
+    path: 'Inicio',
+    component: LandingComponent
+  },
+  {
+    path: 'character/:id',
+    component: CharacterComponent
+  },
+  {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'Inicio',
     pathMatch: 'full'
   },
-  { path: '', component: HomeComponent },
-  { path: 'home', loadChildren: () => import('./components/pages/home/home.module').then(m => m.HomeModule) },
-  { path: 'character-list', loadChildren: () => import('./components/pages/characters/character-list/character-list.module').then(m => m.CharacterListModule) },
-  { path: 'character-details/:id', loadChildren: () => import('./components/pages/characters/character-details/character-details.module').then(m => m.CharacterDetailsModule) },
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
